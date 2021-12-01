@@ -1,0 +1,11 @@
+RunAsDaemon 0
+BridgeRelay 1
+Log notice file /var/log/tor/log
+Log notice stdout
+ServerTransportPlugin obfs4 exec /usr/bin/obfs4proxy
+ExtORPort auto
+DataDirectory /var/lib/tor
+
+# ORPort ${OR_PORT}
+# ServerTransportListenAddr obfs4 0.0.0.0:${PT_PORT}
+%include /etc/torrc.d/*.conf
