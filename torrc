@@ -1,11 +1,16 @@
 RunAsDaemon 0
 BridgeRelay 1
-Log notice file /var/log/tor/log
 Log notice stdout
 ServerTransportPlugin obfs4 exec /usr/bin/obfs4proxy
 ExtORPort auto
 DataDirectory /var/lib/tor
 
-# ORPort ${OR_PORT}
-# ServerTransportListenAddr obfs4 0.0.0.0:${PT_PORT}
+# Default ports (override via /etc/torrc.d/*.conf if needed).
+ORPort 9001
+ServerTransportListenAddr obfs4 0.0.0.0:9002
+
+# Set these via an included config or mounted file:
+#   Nickname     <name>
+#   ContactInfo  <email>
+# Drop-in configs (e.g. Nickname/ContactInfo) are read from here.
 %include /etc/torrc.d/*.conf
